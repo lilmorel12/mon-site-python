@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accueil - Le Site de Daniel</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+
+    <style>
+        body { background-color: lightgray; margin: 0; font-family: 'Roboto', sans-serif; }
+        footer { background-color: #222; color: #aaa; padding: 10px; text-align: center; margin-top: 30px; }
+        header { background-color: #333; color: white; padding: 20px; text-align: center; }
+        nav ul { padding: 0; list-style: none; text-align: center; margin: 10px 0 0 0; }
+        nav li { display: inline-block; margin: 0 15px; }
+        nav a { color: white; text-decoration: none; font-size: 18px; transition: color 0.3s; }
+        nav a:hover { color: #ccc; }
+        main { padding: 20px; max-width: 800px; margin: 0 auto; } 
+        h1 a { color: blue; text-decoration: none; }
+        p { color: green; }
+        img { max-width: 100%; height: auto; cursor: pointer; border-radius: 10px; } 
+        button { background-color: #333; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; font-size: 16px; transition: background-color 0.3s; }
+        button:hover { background-color: #555; }
+        h2 { text-align: center; color: #333; }
+        .boite-sujets { background-color: white; border: 1px solid #ccc; padding: 20px; margin-top: 30px; text-align: center; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); }
+        .bulle-contact { background-color: #e0e0e0; padding: 30px; border-radius: 20px; margin-top: 30px; max-width: 500px; margin-left: auto; margin-right: auto; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); }
+        .carte-conteneur { text-align: center; margin-top: 50px; padding: 30px; background-color: white; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); }
+        .carte-conteneur img { width: 100%; height: auto; border-radius: 10px; }
+        .carte-conteneur p { color: #555; }
+        form { display: grid; gap: 15px; text-align: left; max-width: 400px; margin: 0 auto; }
+        label { font-weight: bold; color: #333; }
+        input[type="text"], input[type="email"], textarea { width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px; box-sizing: border-box; font-family: 'Roboto', sans-serif; }
+        .grille-projets { display: flex; justify-content: center; flex-wrap: wrap; gap: 20px; margin-top: 30px; }
+        .carte-projet { background-color: white; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); width: 300px; padding: 20px; text-align: center; box-sizing: border-box; }
+        .carte-projet img { max-width: 100%; height: auto; border-radius: 5px; margin-bottom: 15px; }
+        .carte-projet h3 { color: #333; margin-top: 0; }
+        .carte-projet p { color: #555; }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="/">Accueil</a></li>
+                <li><a href="/contact">Contact</a></li>
+                <li><a href="/projets">Projets</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <h1><a href="#">Bienvenue sur mon projet</a></h1>
+        <p id="compteur" style="color: #333; font-weight: bold;">Cliquez sur l'image pour commencer le compte.</p>
+        <p>J'apprends à coder les sciences de l'informatique.</p>
+        <img src="pexels-harold-vasquez-853421-2653362.jpg" alt="Une image sur l'informatique" id="image-accueil" onclick="changerImage()">
+        <div class="boite-sujets"> 
+            <h2>Sujets à apprendre</h2>
+            <ul>
+                <li>HTML (La structure)</li>
+                <li>CSS (Le design)</li>
+                <li>JavaScript (L'interactivité)</li>
+                <li><a href="https://www.python.org" target="_blank">Python (Le backend)</a></li>
+            </ul>
+        </div>
+    </main>
+    <footer>
+        <p>Site créé par Daniel - 10 Novembre 2025</p>
+    </footer>
+    <script>
+        let imageActuelle = 1; 
+        let nombreDeClics = 0; 
+        function changerImage() {
+            const imageElement = document.getElementById('image-accueil');
+            if (imageActuelle === 1) {
+                imageElement.src = 'https://upload.wikimedia.org/wikipedia/commons/4/4b/Code-standards-web.jpg';
+                imageActuelle = 2;
+            } else {
+                imageElement.src = 'pexels-harold-vasquez-853421-2653362.jpg';
+                imageActuelle = 1;
+            }
+            nombreDeClics = nombreDeClics + 1;
+            const compteurElement = document.getElementById('compteur'); 
+            compteurElement.textContent = "Vous avez cliqué " + nombreDeClics + " fois sur l'image."; 
+        }
+    </script>
+</body>
+</html>
