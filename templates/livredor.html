@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Livre d'Or - Le Site de Daniel</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+
+    <style>
+        body { background-color: lightgray; margin: 0; font-family: 'Roboto', sans-serif; }
+        footer { background-color: #222; color: #aaa; padding: 10px; text-align: center; margin-top: 30px; }
+        header { background-color: #333; color: white; padding: 20px; text-align: center; }
+        nav ul { padding: 0; list-style: none; text-align: center; margin: 10px 0 0 0; }
+        nav li { display: inline-block; margin: 0 15px; }
+        nav a { color: white; text-decoration: none; font-size: 18px; transition: color 0.3s; }
+        nav a:hover { color: #ccc; }
+        main { padding: 20px; max-width: 800px; margin: 0 auto; } 
+        h2 { text-align: center; color: #333; }
+        .bulle-formulaire { background-color: #e0e0e0; padding: 30px; border-radius: 20px; margin-top: 30px; max-width: 500px; margin-left: auto; margin-right: auto; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); }
+        form { display: grid; gap: 15px; text-align: left; max-width: 400px; margin: 0 auto; }
+        label { font-weight: bold; color: #333; }
+        input[type="text"], textarea { width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px; box-sizing: border-box; font-family: 'Roboto', sans-serif; }
+        button { background-color: #333; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; font-size: 16px; transition: background-color 0.3s; }
+        button:hover { background-color: #555; }
+
+        /* Style pour les messages */
+        .conteneur-messages { margin-top: 40px; }
+        .message-post { background-color: white; padding: 15px; border-radius: 10px; margin-bottom: 15px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
+        .message-post strong { color: #333; }
+        .message-post p { color: #555; margin-top: 5px; margin-bottom: 0; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav>
+            <ul>
+                <li><a href="/">Accueil</a></li>
+                <li><a href="/contact">Contact</a></li>
+                <li><a href="/projets">Projets</a></li>
+                <li><a href="/livredor">Livre d'Or</a></li> 
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div class="bulle-formulaire">
+            <h2>Laissez votre message</h2>
+            <form action="/livredor" method="POST"> 
+                <label for="nom">Votre Nom :</label>
+                <input type="text" id="nom" name="nom" required>
+
+                <label for="message">Votre Message :</label>
+                <textarea id="message" name="message" rows="4" required></textarea>
+
+                <button type="submit">Envoyer</button>
+            </form>
+        </div>
+
+        <div class="conteneur-messages">
+            <h2>Messages des visiteurs</h2>
+
+            {% for m in messages %}
+                <div class="message-post">
+                    <strong>{{ m.nom }} a écrit :</strong>
+                    <p>{{ m.message }}</p>
+                </div>
+            {% else %}
+                <p style="text-align: center; color: #555;">Soyez le premier à laisser un message !</p>
+            {% endfor %}
+        </div>
+
+    </main>
+
+    <footer>
+        <p>Site créé par Daniel - 2025</p>
+    </footer>
+
+</body>
+</html>
